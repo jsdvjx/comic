@@ -46,8 +46,8 @@ const valueResolve = (value: string) =>
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const agent = new Agent({
-  host: '192.168.50.90',
-  port: '1081',
+  // host: '192.168.50.90',
+  // port: '1081',
   rejectUnauthorized: true,
 });
 export type ComicInfo = {
