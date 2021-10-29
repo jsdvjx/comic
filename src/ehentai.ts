@@ -332,7 +332,7 @@ export class Ehentai {
     );
   };
   private static getHtmlResponse = (url: string) => {
-    return from(axios.get(url, { httpsAgent: agent }));
+    return from(axios.get(url, {}));
   };
   private static saveInfo = (info: ComicInfo) => {
     const { savePath } = this;
