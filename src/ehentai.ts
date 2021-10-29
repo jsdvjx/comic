@@ -84,7 +84,6 @@ export class Ehentai {
       finalize(() => {
         Ehentai.zip(_info);
         Logger.debug(`${_info.title} done!`, Ehentai.name);
-        process.exit(0);
       }),
     );
   };
@@ -279,17 +278,19 @@ export class Ehentai {
 
   private static getImagePages = ($: cheerio.CheerioAPI) => {
     const { getHtml } = this;
+
+    const baseUrl = $('.ptt td a').attr('href').replace(/\?.+$/, '');
+    const maxPage = Math.max(
+      ...$('.ptt td')
+        .toArray()
+        .map((i) =>
+          parseInt(cheerio.load(i)('a').attr('href').replace(/.+p=/, '')),
+        )
+        .filter((i) => !isNaN(i)),
+    );
     return merge(
-      from(
-        Array.from(
-          new Set(
-            $('.ptt td')
-              .toArray()
-              .map((i) => cheerio.load(i)('a').attr('href'))
-              .filter((i) => !!i && i.indexOf('?') > 0),
-          ),
-        ),
-      ).pipe(
+      range(1, maxPage).pipe(
+        map((page) => `${baseUrl}?p=${page}`),
         concatMap((url) =>
           getHtml(url).pipe(map((html) => cheerio.load(html))),
         ),
