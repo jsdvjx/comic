@@ -84,6 +84,7 @@ export class Ehentai {
       finalize(() => {
         Ehentai.zip(_info);
         Logger.debug(`${_info.title} done!`, Ehentai.name);
+        process.exit(0);
       }),
     );
   };
@@ -97,7 +98,7 @@ export class Ehentai {
       list.forEach((path) => {
         zip.addLocalFile(path);
       });
-      zip.writeZip(`${path}${info.title}.zip`);
+      zip.writeZip(`${path}${info.id}.zip`);
       list.forEach((path) => unlinkSync(path));
       unlinkSync(`${path}imageUrls.json`);
     } else {
