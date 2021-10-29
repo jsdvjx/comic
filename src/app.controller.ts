@@ -8,9 +8,7 @@ import { Ehentai } from './ehentai';
 export class AppController {
   constructor(private readonly appService: AppService) {
     Ehentai.get(process.argv.pop()).subscribe({
-      complete: () => {
-        process.exit(0);
-      },
+      complete: () => {},
     });
     // from(Comic.getInfoByBookId('229248'))
     //     .pipe(mergeMap((info) => Comic.getPages(info)))
