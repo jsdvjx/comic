@@ -284,7 +284,7 @@ export class Ehentai {
       ...$('.ptt td')
         .toArray()
         .map((i) =>
-          parseInt(cheerio.load(i)('a').attr('href').replace(/.+p=/, '')),
+          parseInt(cheerio.load(i)('a').attr('href')?.replace(/.+p=/, '')),
         )
         .filter((i) => !isNaN(i)),
     );
