@@ -28,6 +28,8 @@
     "adm-zip": "^0.5.9",
     "axios": "^0.23.0",
     "cheerio": "^1.0.0-rc.10",
+    "html-entities": "^2.3.2",
+    "https-proxy-agent": "^5.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
