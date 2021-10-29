@@ -7,7 +7,11 @@ import { Ehentai } from './ehentai';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {
-    Ehentai.get('2046351/45075a2349').subscribe();
+    Ehentai.get(process.argv.pop()).subscribe({
+      complete: () => {
+        process.exit(0);
+      },
+    });
     // from(Comic.getInfoByBookId('229248'))
     //     .pipe(mergeMap((info) => Comic.getPages(info)))
     //     .subscribe();
