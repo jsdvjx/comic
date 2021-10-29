@@ -45,11 +45,7 @@ const valueResolve = (value: string) =>
   decode(value).replace(/<.+>/, '').toLowerCase().trim();
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const agent = new Agent({
-  // host: '192.168.50.90',
-  // port: '1081',
-  rejectUnauthorized: true,
-});
+
 export type ComicInfo = {
   id: string;
   tags: { category: string; tags: string[] }[];
@@ -163,7 +159,6 @@ export class Ehentai {
       axios
         .get(url, {
           responseType: 'stream',
-          httpsAgent: agent,
           timeout: 5000,
         })
         .then((response: AxiosResponse<Stream>) => {
@@ -332,7 +327,7 @@ export class Ehentai {
   private static getHtml = (url: string) => {
     return from(
       axios
-        .get(url, { httpsAgent: agent, headers: { cookie: 'nw=1' } })
+        .get(url, { headers: { cookie: 'nw=1' } })
         .then((response: AxiosResponse<string>) => response.data),
     );
   };
