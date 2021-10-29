@@ -279,7 +279,7 @@ export class Ehentai {
   private static getImagePages = ($: cheerio.CheerioAPI) => {
     const { getHtml } = this;
 
-    const baseUrl = $('.ptt td a').attr('href').replace(/\?.+$/, '');
+    const baseUrl = $('.ptt td a').first().attr('href').replace(/\?.+$/, '');
     const maxPage = Math.max(
       ...$('.ptt td')
         .toArray()
