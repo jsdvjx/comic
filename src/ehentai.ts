@@ -343,6 +343,6 @@ export class Ehentai {
     writeFileSync(`${path}info.json`, JSON.stringify(info));
   };
   private static savePath = (id: string) => {
-    return `~/storage/data/${id}/`;
+    return `/comic/${id}/`;
   };
 }
