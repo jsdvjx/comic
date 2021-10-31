@@ -97,7 +97,7 @@ export class Ehentai {
       list.forEach((path) => {
         zip.addLocalFile(path);
       });
-      zip.writeZip(`${path}${info.id}.zip`);
+      zip.writeZip(`${path}${info.title}.zip`);
       list.forEach((path) => unlinkSync(path));
       unlinkSync(`${path}imageUrls.json`);
     } else {
